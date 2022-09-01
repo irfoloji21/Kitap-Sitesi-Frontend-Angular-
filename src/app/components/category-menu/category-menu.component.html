@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Kategoriler</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <a
+            style="text-decoration:none;"
+            *ngFor="let category of categories"
+            mat-list-item
+            [routerLink]="['/kategori', category._id]"
+            routerLinkActive="active-link" 
+            [routerLinkActiveOptions]="{exact: true}"
+        >
+        <mat-icon>chevron_right</mat-icon>
+        {{category.name}}
+        </a>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

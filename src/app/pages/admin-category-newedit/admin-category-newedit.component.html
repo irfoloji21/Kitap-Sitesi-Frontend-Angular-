@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>{{ title }}</h2>
+        <form [formGroup]="categoryForm" class="form-container" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input formControlName="name" matInput placeholder="Kategori ismi">
+
+                <mat-error *ngIf="this.categoryForm.controls.name.invalid">
+                    <div *ngIf="this.categoryForm.controls.name.hasError('required')">
+                        "bu alan boş bırakılamaz"
+                    </div>
+                </mat-error>
+            </mat-form-field>
+            <button class="mt-2" type="submit" mat-raised-button color="primary">{{ btnText }}</button>
+        </form>
+    </div>
+</div>

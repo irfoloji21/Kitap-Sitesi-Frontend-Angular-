@@ -1,0 +1,20 @@
+<a *ngFor="let book of books" [routerLink]="['/book', book._id]">
+    <mat-card class="cardBook">
+        <mat-card-content style="padding: 10px;">
+        <img mat-card-image [src]="book.picture">
+    </mat-card-content>
+
+    <mat-card-actions style="margin-left: 10px;">
+        <div>
+            <strong> {{ book.title }} </strong>
+        </div>
+    <div>
+        <strong> {{ book.author }} </strong>
+    </div>
+
+    <div class="mt-1">
+        <strong style="color: blue;"> {{ book.price }} TL</strong>
+    </div>
+    </mat-card-actions>
+    </mat-card>
+</a>

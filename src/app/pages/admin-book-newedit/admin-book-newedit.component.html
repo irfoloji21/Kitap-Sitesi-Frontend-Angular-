@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-8 offset-2">
+      <h2>{{ title }}</h2>
+      <form #myForm="ngForm" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="bookForm">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="Kategori seç"
+            formControlName="categoryBy"
+            [matAutocomplete]="auto"
+          />
+          <mat-error *ngIf="this.bookForm.controls.price.invalid">
+            <div *ngIf="this.bookForm.controls.price.hasError('required')">
+              bu alan boş bırakılamaz
+            </div>
+          </mat-error>
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="displayCategoryName"
+          >
+            <mat-option *ngFor="let item of categories" [value]="item">
+              {{ item.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <input formControlName="pictureFile" type="file" (change)="upload($event)" />
+
+          <div *ngIf="pictureFile.invalid && myForm.submitted">
+            <span *ngIf="pictureFile.hasError('required')">
+              lütfen bir resim seçiniz
+            </span>
+          </div>
+        </div>
+  
+        <mat-form-field>
+          <input matInput formControlName="title" placeholder="başlık" />
+  
+          <mat-error *ngIf="this.bookForm.controls.title.invalid">
+            <div *ngIf="this.bookForm.controls.title.hasError('required')">
+              bu alan boş bırakılamaz
+            </div>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput formControlName="author" placeholder="yazar" />
+          <mat-error *ngIf="this.bookForm.controls.author.invalid">
+            <div *ngIf="this.bookForm.controls.author.hasError('required')">
+              bu alan boş bırakılamaz
+            </div>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput formControlName="price" placeholder="fiyat" />
+  
+          <mat-error *ngIf="this.bookForm.controls.price.invalid">
+            <div *ngIf="this.bookForm.controls.price.hasError('required')">
+              bu alan boş bırakılamaz
+            </div>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput formControlName="stock" placeholder="stok" />
+  
+          <mat-error *ngIf="this.bookForm.controls.stock.invalid">
+            <div *ngIf="this.bookForm.controls.stock.hasError('required')">
+              bu alan boş bırakılamaz
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="mt-2">
+          {{ btnText }}
+        </button>
+      </form>
+    </div>
+  </div>
